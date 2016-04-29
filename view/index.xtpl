@@ -1,0 +1,24 @@
+{{extend ("./layout/layout")}}
+
+{{#block ("head")}}
+    <style>
+          #body{
+              position: relative;
+              height: 100%;
+          }
+    </style>
+{{/block}}
+
+{{#block ("body")}}
+
+<div id="body"></div>
+
+
+{{# if( root.state.debug)}}
+<script src="http://192.168.1.105:8081/webpack-dev-server.js"></script>
+<script src="http://192.168.1.105:8081/assets/index.js"></script>
+{{else}}
+<script src="/assets/index.js"></script>
+{{/ if}}
+
+{{/block}}

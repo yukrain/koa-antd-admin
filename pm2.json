@@ -1,0 +1,12 @@
+{
+    "name"        : "pokemon-admin",
+    "script"      : "app.js",
+    "error_file" : "log/app-err.log",
+    "out_file"   : "log/app-out.log",
+    "pid_file"   : "log/yuk-admin.pid",
+    "watch"       : false,
+    "exec_interpreter" : "node",
+    "node_args": "--harmony",
+    "exec_mode"        : "fork"
+
+}
