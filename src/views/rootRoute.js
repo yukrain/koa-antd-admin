@@ -11,10 +11,7 @@ export default function rootRoute(store) {
         indexRoute: {component: Dashboard},
         childRoutes: [
             require('./Help'),
-            require('./About'),
-            require('./GameMonitor'),
-            require('./Uploader'),
-            require('./Search'),
+            require('./About')
         ],
         onEnter: function (nextState, replaceState, callback) {
             // 需要做权限控制的时候开启

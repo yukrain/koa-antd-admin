@@ -49,15 +49,13 @@ export class AppView extends React.Component {
 
             <aside className="ant-layout-sider">
                 <div className="ant-layout-logo ">
-                    <i className="iconfont adminlogo">&#xe605;</i> <span>挂机游戏后台</span>
+                    <i className="iconfont adminlogo">&#xe605;</i> <span>后台</span>
                 </div>
                 <Menu mode="inline" theme="dark"
                       onClick={this.handleClick.bind(this)}
                       defaultSelectedKeys={[curPath]} defaultOpenKeys={['sub1']}>
                     <SubMenu key="sub1" title={<span><Icon type="user" />状态</span>}>
                         <Menu.Item key="/"><Link to="/">主页</Link></Menu.Item>
-                        <Menu.Item key="/monitor"><Link to="/monitor">服务器监控</Link></Menu.Item>
-                        <Menu.Item key="/search"><Link to="/search">查询消耗</Link></Menu.Item>
                     </SubMenu>
                 </Menu>
             </aside>
@@ -72,8 +70,7 @@ export class AppView extends React.Component {
                             </Badge>
                         </li>
                         <li>|</li>
-                        <li> <Link to="/help"> <Icon type="question-circle-o" /> 帮助</Link></li>     <li>|</li>
-                        <li> <Link to="/uploader"> 文件</Link></li>
+                        <li> <Link to="/help"> <Icon type="question-circle-o" /> 帮助</Link></li>
                         <li>|</li>
                         <li>
                             <Dropdown overlay={topmenu}>

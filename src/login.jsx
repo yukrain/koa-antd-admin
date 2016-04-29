@@ -15,7 +15,7 @@ let LoginPage =  React.createClass({
                 <div className="ant-layout-ceiling">
                     <div className="ant-layout-wrapper">
                         <ul className="right">
-                            <li>yueshiyu@dayugame.com</li>
+                            <li></li>
                             <li>|</li>
                             <li>注册账号</li>
                         </ul>
@@ -25,7 +25,7 @@ let LoginPage =  React.createClass({
                     <Row>
                         <Col span="12" offset="6">
                             <div className="login-main">
-                                <div className="login-title">挂机游戏后台</div>
+                                <div className="login-title">后台</div>
                                 <div className="login-cnt">
                                     <LoginForm />
                                 </div>
