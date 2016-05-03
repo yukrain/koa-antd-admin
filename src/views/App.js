@@ -36,8 +36,6 @@ export class AppView extends React.Component {
                 <Menu.Item key="0">
                     <a href="/logout">注销</a>
                 </Menu.Item>
-                <Menu.Item key="5"> <a href="/help">帮助</a> </Menu.Item>
-
                 <Menu.Divider />
                 <Menu.Item key="1" disabled>设置 </Menu.Item>
                 <Menu.Item key="3" disabled>修改密码</Menu.Item>

@@ -17,6 +17,16 @@ const Test = React.createClass({
                 <h2 className="ant-panel-title">Welcome!</h2>
 
                 这是主面板.啦啦啦啦
+                <h3>
+                    常用
+                </h3>
+                <ul>
+                    <li> 图表 react-highcharts</li>
+                    <li> 异步请求 reqwest</li>
+                    <li> 数据库 nedb</li>
+                    <li> excel处理 node-xlsx</li>
+
+                </ul>
 
             </div>
         );
