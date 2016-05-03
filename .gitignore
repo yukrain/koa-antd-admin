@@ -1,0 +1,13 @@
+# 忽略node_modules模块
+node_modules/*
+bower_components/*
+# 忽略上传文件
+public/upload/*
+upload/*
+# 忽略工程文件
+.idea/*
+# 文档
+doc/*
+components/*
+log/*
+

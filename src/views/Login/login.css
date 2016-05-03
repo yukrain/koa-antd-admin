@@ -1,0 +1,87 @@
+html, body{
+    height: 100%;
+}
+html, body, ul, li, p {
+    margin: 0;
+    padding: 0;
+}
+
+#body{
+    background: url(./bg-001.jpg) no-repeat;
+}
+.ant-layout-ceiling-demo {
+    height: 100%;
+}
+
+.ant-layout-ceiling {
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #3e3e3e;
+    color: #ddd;
+}
+
+.ant-layout-ceiling .right {
+    float: right;
+}
+
+.ant-layout-ceiling ul li {
+    display: inline-block;
+    margin: 0 4px;
+}
+
+.ant-layout-ceiling-demo .ant-layout-wrapper {
+    padding: 0 50px;
+}
+
+.ant-layout-ceiling-demo .ant-layout-header {
+    background: #fff;
+    height: 64px;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.ant-layout-ceiling-demo .ant-layout-logo {
+    width: 120px;
+    height: 32px;
+    background: #eee;
+    border-radius: 6px;
+    margin: 16px 28px 16px 0;
+    float: left;
+}
+
+.ant-layout-ceiling-demo .ant-layout-body{
+
+    padding-top: 100px;
+}
+
+.login-main{
+    width: 450px;
+    background: #fff;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,.1);
+    font-size: 14px;
+
+}
+
+.login-main .login-title {
+    margin: 0;
+    padding: 30px 20px 26px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.login-main .login-cnt {
+    padding: 0 25px 10px;
+}
+form .login-form-input{
+    height: 40px;
+}
+.login-submit{
+    height: 37px;
+    width: 100%;
+}
+.login-form-captcha img{
+    vertical-align: middle;
+}
+.login-form-captcha a{
+    font-size: 12px;
+}

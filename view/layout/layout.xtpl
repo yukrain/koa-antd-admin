@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="charset" content="utf-8" />
+    <title>{{title}}</title>
+    <link  rel="shortcut icon"  type='image/x-icon' href='/favicon.png' media='screen'>
+    <!--<script src="http://cdn.staticfile.org/jquery/2.1.1-rc2/jquery.min.js"></script>-->
+
+    {{{block ("head")}}}
+</head>
+<body>
+{{include ("./header")}}
+
+ {{{block ("body")}}}
+
+{{include ("./footer")}}
+</body>
+</html>

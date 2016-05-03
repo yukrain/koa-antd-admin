@@ -1,0 +1,23 @@
+{{extend ("./layout/layout")}}
+
+{{#block ("head")}}
+<style>
+    #body{
+        position: relative;
+        height: 100%;
+    }
+</style>
+{{/block}}
+
+{{#block ("body")}}
+<input type="hidden" value="{{verify_code}}" id="verify_code"/>
+<div id="body" style="height: 100%"></div>
+
+{{# if( root.debug)}}
+<script src="http://localhost:8081/webpack-dev-server.js"></script>
+<script src="http://localhost:8081/assets/login.js"></script>
+{{else}}
+<script src="/assets/login.js"></script>
+{{/ if}}
+
+{{/block}}
