@@ -12,9 +12,8 @@ var users = {
 
 module.exports = {
     index: function*(){
-        console.log(this.state)
         if(this.session.login){
-            yield this.render('index',{"title":"口袋挂机后台", state: this.state});
+            yield this.render('index',{"title":"后台", state: this.state});
         }else{
             this.redirect("/login");
         }
@@ -27,7 +26,7 @@ module.exports = {
 
     login: function*(){
         var params  = this.request.body;
-        if(params.captcha.toLocaleUpperCase() !== this.session.captcha){
+        if(params.captcha.toString().toLocaleUpperCase() !== this.session.captcha.toString()){
             this.body = {
                 login: false,
                 msg: '验证码错误'
@@ -59,8 +58,6 @@ module.exports = {
         this.redirect("/login");
     },
 
-
-
     getCaptcha: function *(){
         this.type = 'jpg';
         this.set({
@@ -75,14 +72,15 @@ module.exports = {
             height: 32, // captcha height
             color: 'green', // code color,
             background: 'rgb(245,245,245)', // captcha background color
-            lineWidth: 0.5 // Interference lines width
+            lineWidth: 0.5, // Interference lines width
+            type : 'arithmetic'
         });
         this.session && (this.session.captcha = data[0])
         this.body = data[1]
     },
 
     checkAuthCode: function *(){
-        var params  = this.request.body;
+        var params = this.request.body;
         if(params.authcode == this.session.authcode){
             this.body = {
                 result: true

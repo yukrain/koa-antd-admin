@@ -18,7 +18,7 @@ const target = document.getElementById('body');
 
 import DevTools from './store/DevTools';
 
-import rootRoute from './views/rootRoute'
+import rootRoute from './routers/rootRoute'
 
 //console.log(rootRoute)
 //        <Router history={history} routes={route(store)}/>

@@ -1,4 +1,4 @@
-import { Button, Form, Input, Checkbox, Tooltip, Icon, Alert, Spin, Row, Col } from 'antd';
+import { Button, Form, Input, Checkbox, Icon, Alert, Spin, Row, Col } from 'antd';
 const createForm = Form.create;
 const FormItem = Form.Item;
 import reqwest from 'reqwest';
@@ -46,7 +46,7 @@ let LoginForm = React.createClass({
 
                     if(result.login){
                         //this.setState({ loginMsg: "" });
-                        location.href = '/monitor'
+                        location.href = '/'
                     }else if(result.msg == "验证码错误"){
                         this.setState({ loginMsg: "验证码错误",captchaError:"error" });
                         this.clearCaptcha();
@@ -140,8 +140,12 @@ let LoginForm = React.createClass({
                     </Row>
 
                     <FormItem >
-                        <Checkbox defaultValue={true}
-                            {...getFieldProps('agreement')} />记住我7天 <Tooltip title="七天内自动登陆"><Icon type="question-circle-o" /></Tooltip>
+                        <label className="ant-checkbox-inline">
+                            <Checkbox defaultValue={true}
+                                {...getFieldProps('agreement')} />记住我
+                        </label>
+
+
                     </FormItem >
                     <FormItem >
                         <Button type="primary" size="large" htmlType="submit" className="login-submit" loading={this.state.loading} >登录</Button>
