@@ -1,11 +1,11 @@
 import { Menu, Breadcrumb, Row, Col} from 'antd';
 
 
-import  LoginForm from'./views/Login/LoginForm';
+import  LoginForm from'./routers/Login/LoginForm';
 
 //import 'normalize/normalize.css';
 import 'antd/lib/index.css';
-import './views/Login/login.css';
+import './routers/Login/login.css';
 
 const mountNode = document.getElementById('body');
 let LoginPage =  React.createClass({
@@ -30,7 +30,6 @@ let LoginPage =  React.createClass({
                                     <LoginForm />
                                 </div>
                                 <div className="link-con" >
-
                                 </div>
                             </div>
 

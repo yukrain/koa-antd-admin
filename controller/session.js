@@ -6,7 +6,7 @@
 module.exports = {
 
     setLogin : function(){
-        this.session.cookie.maxAge = 1000 * 3600 * 24 * 7;
+        this.session.cookie.maxage = 1000 * 3600 * 24 * 7;
         this.session.login = true;
     },
 
@@ -15,7 +15,7 @@ module.exports = {
     },
 
     setRememberMe : function(){
-        this.session.cookie.maxAge = 1000 * 3600 * 24 * 30;
+        this.session.cookie.maxage = 1000 * 3600 * 24 * 30;
     },
 
     setLogout : function(){

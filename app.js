@@ -107,25 +107,34 @@ if(config.debug){
 //路由
 var router = require('koa-router');
 
-/**
- * 统一处理默认Error
- */
-//app.use(function *(next) {
-//    try {
-//        yield next;
-//    } catch (err) {
-//
-//        this.status = err.status || 500;
-//        this.body = {
-//            name: "Error",
-//            code: err.status || 500,
-//            message: err.message || "服务器错误",
-//            success: false
-//        };
-//            //this.app.emit('error', err, this);
-//
-//    }
-//});
+//统一处理默认Error
+app.use(function *(next) {
+    yield next;
+    //try {
+    //    yield next;
+    //} catch (err) {
+    //    console.log(err);
+    //    //logger.error(err);
+    //    this.status = err.status || 500;
+    //    this.body = {
+    //        name: "Error",
+    //        code: err.status || 500,
+    //        message: err.message || "服务器错误",
+    //        success: false
+    //    };
+    //        //this.app.emit('error', err, this);
+    //
+    //}
+});
+
+//处理404
+app.use(function *(next) {
+    yield next;
+
+    if( this.status == 404){
+        this.body = { name: "PageNotFound"};
+    }
+});
 
 //应用路由
 var appRouter = require('./router/index');
@@ -137,7 +146,7 @@ if (process.env.NODE_ENV == 'pruduction') {
     app.on('error', function(err){
             console.log('sent error %s to the cloud', err.message);
             console.log(err);
-
+            logger.error(err);
     });
 }
 
