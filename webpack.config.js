@@ -10,7 +10,8 @@ var config = {
     output: {
         publicPath: "/assets/",
         path: path.join(__dirname, '/public/assets'),
-        filename: '[name].js',
+        filename: '[name].js?[hash]',
+        chunkFilename: "[id].bundle.js?[hash]"
     },
     resolve: {
         extensions:['','.js','.json','.jsx','.css','.es6','.scss','.png','.jpg','.jpeg'],

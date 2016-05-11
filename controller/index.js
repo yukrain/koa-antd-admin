@@ -2,7 +2,7 @@
 
 var session = require('./session');
 var bcrypt = require('bcryptjs');
-var captcha = require('./captcha');
+var captcha = require('koa-canvas-captcha');
 var fs = require('fs');
 var path = require('path');
 
@@ -59,13 +59,7 @@ module.exports = {
     },
 
     getCaptcha: function *(){
-        this.type = 'jpg';
-        this.set({
-            'Cache-Control': 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0',
-            'Expires': 'Sun, 12 Jan 1986 12:00:00 GMT'
-        });
-        //生成验证码 返回text和图buffer
-        var data = yield captcha({
+        var item = yield captcha({
             length: 4, //code length
             fontSize: 30, //code size
             width: 150, // captcha width
@@ -73,10 +67,10 @@ module.exports = {
             color: 'green', // code color,
             background: 'rgb(245,245,245)', // captcha background color
             lineWidth: 0.5, // Interference lines width
-            type : 'arithmetic'
+            type: 'arithmetic'
         });
-        this.session && (this.session.captcha = data[0])
-        this.body = data[1]
+        this.session && (this.session.captcha = item.answer);
+        this.body = item.imageBuffer
     },
 
     checkAuthCode: function *(){
