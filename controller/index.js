@@ -20,8 +20,9 @@ module.exports = {
     },
     loginRender: function*(){
 
-        this.session.verify_code =  Math.random().toString(36).slice(2);
-        yield this.render('login',{"title":"登陆", verify_code: this.session.verify_code, state: this.state});
+        var verify_code = Math.random().toString(36).slice(2);
+        this.session.verify_code = verify_code;
+        yield this.render('login',{"title":"登陆", verify_code: verify_code, state: this.state});
     },
 
     login: function*(){
@@ -31,7 +32,7 @@ module.exports = {
                 login: false,
                 msg: '验证码错误'
             };
-        }else if(params.username in users && bcrypt.compareSync(  this.session.verify_code + users[params.username] ,  params.password) ){
+        }else if(params.username in users && bcrypt.compareSync(  params.verify_code  + users[params.username] ,  params.password) ){
             session.setLogin.call(this);
 
             if(params.agreement){
