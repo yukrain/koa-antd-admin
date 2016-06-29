@@ -53,7 +53,7 @@ export class AppView extends React.Component {
                       onClick={this.handleClick.bind(this)}
                       defaultSelectedKeys={[curPath]} defaultOpenKeys={['sub1']}>
                     <SubMenu key="sub1" title={<span><Icon type="user" />状态</span>}>
-                        <Menu.Item key="/"><Link to="/">主页</Link></Menu.Item>
+                        <Menu.Item key="/app"><Link to="/app">主页</Link></Menu.Item>
                     </SubMenu>
                 </Menu>
             </aside>

@@ -16,7 +16,7 @@ var config = {
     resolve: {
         extensions:['','.js','.json','.jsx','.css','.es6','.scss','.png','.jpg','.jpeg'],
         alias: {
-            'react-dom':  path.join(NodeModules,   "/react-dom/dist/react-dom"),
+            //'react-dom':  path.join(NodeModules,   "/react-dom/dist/react-dom"),
             'antd':  path.join(NodeModules,   "/antd"),
             'normalize':  path.join(NodeModules,   "/normalize.css"),
             'history':  path.join(NodeModules,   "/history"),
@@ -67,7 +67,7 @@ var config = {
             //jQuery: "jquery",
             //"window.jQuery": "jquery",
             "React": "react",
-            "ReactDOM": "react-dom",
+            //"ReactDOM": "react-dom",
         }),
         //new webpack.DefinePlugin({
         //    'process.env.NODE_ENV': '"production"'

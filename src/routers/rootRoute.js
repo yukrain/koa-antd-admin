@@ -6,7 +6,7 @@ import Dashboard from './Dashboard';
 
 export default function rootRoute(store) {
     return {
-        path: '/',
+        path: '/app',
         component: AppView,
         indexRoute: {component: Dashboard},
         childRoutes: [

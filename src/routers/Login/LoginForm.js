@@ -5,10 +5,6 @@ import reqwest from 'reqwest';
 import bcrypt from 'bcryptjs';
 import md5 from 'md5';
 
-function noop() {
-    return false;
-}
-
 let LoginForm = React.createClass({
 
     getInitialState() {
@@ -46,17 +42,14 @@ let LoginForm = React.createClass({
 
                     if(result.login){
                         //this.setState({ loginMsg: "" });
-                        location.href = '/'
-                    }else if(result.msg == "验证码错误"){
-                        this.setState({ loginMsg: "验证码错误",captchaError:"error" });
-                        this.clearCaptcha();
-                    }else{
-                        this.setState({ loginMsg: "账户名或密码错误"  });
+                        location.href = '/app'
                     }
-                }
+                },
+                error: (err, response, text) => {
+                    this.setState({ loading: false ,  loginMsg: JSON.parse(err.response).message});
+                },
             });
         });
-
     },
 
     clearCaptcha(e){
@@ -76,66 +69,47 @@ let LoginForm = React.createClass({
     render() {
         const { getFieldProps } = this.props.form;
 
-        const userNameProps = getFieldProps('username', {
-            initialValue: 'admin',
-            validate: [{
-                rules: [
-                    { required: true , message: '请输入用户名' },
-                ],
-                trigger: 'onBlur',
-            }]
-        });
+        let loginMsg = this.state.loginMsg !== "" ?  <Alert message={this.state.loginMsg}   type="error" showIcon /> : null;
 
-        const passwordProps = getFieldProps('password', {
-            initialValue: '123456',
-            validate: [{
-                rules: [
-                    { required: true, message: '请输入密码'  },
-                ],
-                trigger: 'onBlur',
-            }]
-        });
-
-        const captchaProps = getFieldProps('captcha', {
-            onChange: this.resetCapthaError,
-            validate: [{
-                rules: [
-                    { required: true,  message: '请输入验证码' }
-                ],
-                trigger: 'onChange'
-            }]
-
-        });
-
-
-        const loginMsg = this.state.loginMsg == "" ? null : <Alert message={this.state.loginMsg}   type="error" showIcon />
-
-        const captchaFormItenProps = this.state.captchaError !== "" ? {   validateStatus: 'error',help:'验证码错误' } : {}
+        let captchaFormItenProps = this.state.captchaError !== "" ? {   validateStatus: 'error',help:'验证码错误' } : {}
 
         return (
-            <Spin spining={this.state.loading}>
+            <Spin spinning={this.state.loading}>
                 <Form  onSubmit={this.handleSubmit}  form={this.props.form}>
                     {loginMsg}
                     <FormItem >
                         <Input placeholder="请输入用户名" className="login-form-input"   size="large"  autoComplete="off"
-                            {...userNameProps} />
+                            {...getFieldProps('user', {
+                                validate: [{
+                                    rules: [
+                                        { required: true , message: '请输入用户名' }
+                                    ],
+                                    trigger: 'onChange',
+                                }]
+                            })} />
                     </FormItem>
-                    <FormItem >
-                        <Input type="password" placeholder="请输入密码" className="login-form-input"  size="large"  autoComplete="off"
-                            {...passwordProps} />
+                    <FormItem required>
+                        <Input type="password" placeholder="请输入密码" className="login-form-input" size="large"
+                               autoComplete="off"
+                            {...getFieldProps('password')} />
                     </FormItem>
 
                     <Row>
                         <Col span="10">
-                            <FormItem ref="captcha"
+                            <FormItem
+                                required
                                 {...captchaFormItenProps}>
-                                <Input placeholder="验证码"  size="large"  autoComplete="off"
-                                    {...captchaProps} />
+                                <Input placeholder="验证码" size="large" autoComplete="off"
+                                    {...getFieldProps('captcha', {
+                                        onChange: this.resetCapthaError
+
+                                    })} />
                             </FormItem>
                         </Col>
                         <Col span="13" offset="1" className="login-form-captcha">
-                            <img src={"/captcha?r_" + this.state.random}  height="32" alt="" />
-                            <a href="javascript:void(0)" style={{marginLeft: 6}} onClick={this.getNewCaptcha}><Icon type="reload" /> 刷新</a>
+                            <img src={"/captcha?r_" + this.state.random} height="32" alt=""/>
+                            <a href="javascript:void(0)" style={{marginLeft: 6}} onClick={this.getNewCaptcha}><Icon
+                                type="reload"/> 刷新</a>
                         </Col>
                     </Row>
 
@@ -144,9 +118,8 @@ let LoginForm = React.createClass({
                             <Checkbox defaultValue={true}
                                 {...getFieldProps('agreement')} />记住我
                         </label>
-
-
                     </FormItem >
+
                     <FormItem >
                         <Button type="primary" size="large" htmlType="submit" className="login-submit" loading={this.state.loading} >登录</Button>
                     </FormItem>

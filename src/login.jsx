@@ -1,10 +1,13 @@
+
+import { render } from 'react-dom';
+
 import { Menu, Breadcrumb, Row, Col} from 'antd';
 
 
 import  LoginForm from'./routers/Login/LoginForm';
 
 //import 'normalize/normalize.css';
-import 'antd/lib/index.css';
+import 'antd/dist/antd.css';
 import './routers/Login/login.css';
 
 const mountNode = document.getElementById('body');
@@ -15,7 +18,6 @@ let LoginPage =  React.createClass({
                 <div className="ant-layout-ceiling">
                     <div className="ant-layout-wrapper">
                         <ul className="right">
-                            <li></li>
                             <li>|</li>
                             <li>注册账号</li>
                         </ul>
@@ -42,6 +44,6 @@ let LoginPage =  React.createClass({
 });
 
 
-ReactDOM.render(
+render(
     <LoginPage/>
     , mountNode);

@@ -61,10 +61,10 @@ var session = require('koa-generic-session');
 var MongoStore = require('koa-sess-mongo-store');
 var sessionConfig = {
     store: new MongoStore({
-        db: 'game_admin'
+        db: 'koa_admin'
     }),
-    prefix: 'yuk-admin:sess:',
-    key: 'yuk-admin.sid',
+    prefix: 'koa_admin:sess:',
+    key: 'koa_admin.sid',
     beforeSave: function(ctx, sess){
         ctx.session.cookie.maxAge = sess.cookie.maxage; //兼容 maxAge
     }
@@ -107,25 +107,25 @@ if(config.debug){
 //路由
 var router = require('koa-router');
 
-//统一处理默认Error
-app.use(function *(next) {
-    yield next;
-    //try {
-    //    yield next;
-    //} catch (err) {
-    //    console.log(err);
-    //    //logger.error(err);
-    //    this.status = err.status || 500;
-    //    this.body = {
-    //        name: "Error",
-    //        code: err.status || 500,
-    //        message: err.message || "服务器错误",
-    //        success: false
-    //    };
-    //        //this.app.emit('error', err, this);
-    //
-    //}
-});
+
+    app.use(function *(next) {
+        //yield next;
+        try {
+            yield next;
+        } catch (err) {
+            console.log(err);
+            //logger.error(err);
+            this.status = err.status || 500;
+            this.body = {
+                name: "Error",
+                code: err.status || 500,
+                message: err.message || "服务器错误",
+                success: false
+            };
+            //this.app.emit('error', err, this);
+
+        }
+    });
 
 //处理404
 app.use(function *(next) {

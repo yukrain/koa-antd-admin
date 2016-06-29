@@ -11,13 +11,16 @@ module.exports = function(app, Router){
     router.post('/login', controller.login);
     router.get('/logout', controller.logout);
 
-    //验证接口权限
-    router.use(controller.checkLogin);
 
-    router.get('/',controller.index);
-
+    router.use('/api', controller.checkLogin);
     router.get('/api',controller.api);
-    router.get('/*',controller.index);
+
+
+    router.use('/app', controller.checkLogin);
+    router.get('/app',controller.index);
+    router.get('/app/*',controller.index);
+    router.get('/*',controller.redirectIndex);
+
 
     app.use(router.routes());
 }

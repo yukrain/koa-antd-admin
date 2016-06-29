@@ -8,7 +8,7 @@ import configureStore from './store/configureStore'
 const store = configureStore();
 //import route from './route'
 
-import 'antd/lib/index.css';
+import 'antd/dist/antd.css';
 import './index.css';
 
 
@@ -22,6 +22,7 @@ import rootRoute from './routers/rootRoute'
 
 //console.log(rootRoute)
 //        <Router history={history} routes={route(store)}/>
+
 
 
 ReactDOM.render(
