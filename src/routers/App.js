@@ -47,7 +47,7 @@ export class AppView extends React.Component {
 
             <aside className="ant-layout-sider">
                 <div className="ant-layout-logo ">
-                    <i className="iconfont adminlogo">&#xe605;</i> <span>后台</span>
+                   <span>后台</span>
                 </div>
                 <Menu mode="inline" theme="dark"
                       onClick={this.handleClick.bind(this)}
