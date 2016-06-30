@@ -1,1 +1,0 @@
-webpackJsonp([3],{813:function(e,n,l){(function(n){"use strict";var l=n.createClass({displayName:"Help",render:function(){return n.createElement("div",null,n.createElement("h2",null,"帮助文档"),n.createElement("p",null,"空"))}});e.exports=l}).call(n,l(1))}});
