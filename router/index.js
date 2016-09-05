@@ -4,7 +4,6 @@ module.exports = function(app, Router){
 
     var router = new Router();
 
-    router.get('/captcha', controller.getCaptcha);
 
     //登陆
     router.get('/login', controller.loginRender);

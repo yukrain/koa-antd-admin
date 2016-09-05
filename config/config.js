@@ -23,6 +23,13 @@ var config = {
 
 };
 
+var fs = require('fs')
+fs.exists(config.logDir, function (exists) {
+    if(!exists){
+        fs.mkdir(config.logDir)
+    }
+});
+
 //当NODE_ENV环境变量值为local时
 //本地调试环境
 if(process.env.NODE_ENV === 'local' || process.env.NODE_ENV === 'development'){

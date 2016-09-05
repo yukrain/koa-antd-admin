@@ -6,6 +6,7 @@ public/upload/*
 upload/*
 # 忽略工程文件
 .idea/*
+.DS_Store
 # 文档
 doc/*
 components/*

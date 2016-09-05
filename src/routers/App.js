@@ -52,8 +52,8 @@ export class AppView extends React.Component {
                 <Menu mode="inline" theme="dark"
                       onClick={this.handleClick.bind(this)}
                       defaultSelectedKeys={[curPath]} defaultOpenKeys={['sub1']}>
-                    <SubMenu key="sub1" title={<span><Icon type="user" />状态</span>}>
-                        <Menu.Item key="/app"><Link to="/app">主页</Link></Menu.Item>
+                    <SubMenu key="sub1" title={<span><Icon type="user" />主页</span>}>
+                        <Menu.Item key="/app"><Link to="/app">面板</Link></Menu.Item>
                     </SubMenu>
                 </Menu>
             </aside>
@@ -68,7 +68,7 @@ export class AppView extends React.Component {
                             </Badge>
                         </li>
                         <li>|</li>
-                        <li> <Link to="/help"> <Icon type="question-circle-o" /> 帮助</Link></li>
+                        <li> <Link to="/app/help"> <Icon type="question-circle-o" /> 帮助</Link></li>
                         <li>|</li>
                         <li>
                             <Dropdown overlay={topmenu}>

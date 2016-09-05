@@ -8,8 +8,9 @@ import configureStore from './store/configureStore'
 const store = configureStore();
 //import route from './route'
 
-import 'antd/dist/antd.css';
+import './index.less';
 import './index.css';
+
 
 
 

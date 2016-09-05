@@ -8,8 +8,6 @@
 var debug = require('debug')('yuk-admin');
 var koa = require('koa');
 var gzip = require('koa-gzip');
-var heapdump = require('heapdump');
-heapdump.writeSnapshot(__dirname +'/heap/' + Date.now() + '.heapsnapshot');
 
 var favicon = require('koa-favicon');
 
@@ -19,9 +17,7 @@ var config = require('./config/config');
 var app = koa();
 app.keys = ['keys', 'keykeys'];
 
-
 app.use(gzip());
-
 app.use(function *(next){
     //config 注入中间件，方便调用配置信息
     if(!this.config){
@@ -32,6 +28,8 @@ app.use(function *(next){
 
 
 app.use(favicon(__dirname + '/public/favicon.png'));
+
+
 
 //log记录
 var Logger = require('mini-logger');
@@ -108,24 +106,24 @@ if(config.debug){
 var router = require('koa-router');
 
 
-    app.use(function *(next) {
-        //yield next;
-        try {
-            yield next;
-        } catch (err) {
-            console.log(err);
-            //logger.error(err);
-            this.status = err.status || 500;
-            this.body = {
-                name: "Error",
-                code: err.status || 500,
-                message: err.message || "服务器错误",
-                success: false
-            };
-            //this.app.emit('error', err, this);
+app.use(function *(next) {
+    //yield next;
+    try {
+        yield next;
+    } catch (err) {
+        console.log(err);
+        //logger.error(err);
+        this.status = err.status || 500;
+        this.body = {
+            name: "Error",
+            code: err.status || 500,
+            message: err.message || "服务器错误",
+            success: false
+        };
+        //this.app.emit('error', err, this);
 
-        }
-    });
+    }
+});
 
 //处理404
 app.use(function *(next) {

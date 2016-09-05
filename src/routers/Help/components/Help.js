@@ -2,10 +2,10 @@
 let Help = React.createClass({
     render () {
 
-        return <div>
-            <h2>帮助文档</h2>
-            <p>空</p>
+        return     <div className="ant-panel-box">
+            <h2 className="ant-panel-title">Help!</h2>
 
+            Some text!
         </div>
     }
 });

@@ -41,7 +41,7 @@ let LoginForm = React.createClass({
 
                     if(result.login){
                         //this.setState({ loginMsg: "" });
-                        location.href = '/app'
+                        location.href = '/app?_='+Math.random()
                     }
                 },
                 error: (err, response, text) => {
@@ -56,10 +56,9 @@ let LoginForm = React.createClass({
 
         let loginMsg = this.state.loginMsg !== "" ?  <Alert message={this.state.loginMsg}   type="error" showIcon /> : null;
 
-
         return (
             <Spin spinning={this.state.loading}>
-                <Form  onSubmit={this.handleSubmit}  form={this.props.form}>
+                <Form  onSubmit={this.handleSubmit}>
                     {loginMsg}
                     <FormItem >
                         <Input placeholder="请输入用户名" className="login-form-input"   size="large"  autoComplete="off"

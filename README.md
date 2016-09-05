@@ -9,4 +9,10 @@
     $ npm start
 ```
 
+### Default User
+```
+    User: admin
+    Password: 123456
+```
+
 Open `http://localhost:3000` in your browser.
