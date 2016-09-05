@@ -12,7 +12,6 @@ let LoginForm = React.createClass({
             loginMsg: "",
             loading: false,
             random:  Math.random(),
-            captchaError: ""
         };
     },
 
@@ -52,26 +51,11 @@ let LoginForm = React.createClass({
         });
     },
 
-    clearCaptcha(e){
-        this.props.form.resetFields(["captcha"]);
-    },
-
-    //重置验证码
-    getNewCaptcha(e){
-        this.clearCaptcha();
-        this.setState({  random:  Math.random() });
-    },
-
-    //重置验证码状态
-    resetCapthaError(){
-        this.setState({ captchaError: "" });
-    },
     render() {
         const { getFieldProps } = this.props.form;
 
         let loginMsg = this.state.loginMsg !== "" ?  <Alert message={this.state.loginMsg}   type="error" showIcon /> : null;
 
-        let captchaFormItenProps = this.state.captchaError !== "" ? {   validateStatus: 'error',help:'验证码错误' } : {}
 
         return (
             <Spin spinning={this.state.loading}>
@@ -93,25 +77,6 @@ let LoginForm = React.createClass({
                                autoComplete="off"
                             {...getFieldProps('password')} />
                     </FormItem>
-
-                    <Row>
-                        <Col span="10">
-                            <FormItem
-                                required
-                                {...captchaFormItenProps}>
-                                <Input placeholder="验证码" size="large" autoComplete="off"
-                                    {...getFieldProps('captcha', {
-                                        onChange: this.resetCapthaError
-
-                                    })} />
-                            </FormItem>
-                        </Col>
-                        <Col span="13" offset="1" className="login-form-captcha">
-                            <img src={"/captcha?r_" + this.state.random} height="32" alt=""/>
-                            <a href="javascript:void(0)" style={{marginLeft: 6}} onClick={this.getNewCaptcha}><Icon
-                                type="reload"/> 刷新</a>
-                        </Col>
-                    </Row>
 
                     <FormItem >
                         <label className="ant-checkbox-inline">
