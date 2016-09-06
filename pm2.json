@@ -1,5 +1,5 @@
 {
-    "name"        : "pokemon-admin",
+    "name"        : "koa-antd-admin",
     "script"      : "app.js",
     "error_file" : "log/app-err.log",
     "out_file"   : "log/app-out.log",

@@ -12,9 +12,7 @@
     "start-production": "NODE_ENV=production  node --harmony app.js",
     "webpack-dev": "node webpack.server.js",
     "webpack-pro": "webpack --config webpack.production.js -p --progress --colors --display-modules --profile",
-    "pm2-start": "pm2 start pm2.json",
-    "sync-ucloud": "sh ./sync-ucloud.sh",
-    "sync-yuk": "sh ./sync-yuk.sh"
+    "pm2-start": "pm2 start pm2.json"
   },
   "dependencies": {
     "antd": "^1.10.0",

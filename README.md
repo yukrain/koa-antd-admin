@@ -4,6 +4,7 @@
 ```
     $ git clone https://github.com/yukrain/koa-antd-admin
     $ cd koa-antd-admin
+    $ mkdir log
     $ npm install
     $ npm run webpack-dev
     $ npm start
